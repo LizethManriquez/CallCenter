@@ -17,7 +17,8 @@ namespace SoftvWCFService
 {
     public partial class SoftvWCFService : IUsuario, IRole, IModule, IPermiso, IEncuesta, IPregunta, ITipoPreguntas, IRelEncuestaClientes, IRelPreguntaOpcMults,
         IRelPreguntaEncuestas, IResOpcMults, IRelEnProcesos, IConexion, ICLIENTE, ITurno, ILlamada, IRel_Clientes_TiposClientes, ITipoCliente, ICatalogoPeriodosCorte,
-        ICliente_Apellido, ITap, IDatoFiscal, ITrabajo, ITipServ, IMotivoCancelacion, IRelEncuestaPreguntaRes, IQueja, ICIUDAD, ICVECOLCIU, ICOLONIA, ICVECAROL, ICALLE
+        ICliente_Apellido, ITap, IDatoFiscal, ITrabajo, ITipServ, IMotivoCancelacion, IRelEncuestaPreguntaRes, IQueja, ICIUDAD, ICVECOLCIU, ICOLONIA, ICVECAROL, ICALLE,
+        IBusquedaIndividual
     {
         #region Usuario
         public UsuarioEntity GetUsuario(int? IdUsuario)
@@ -176,6 +177,47 @@ namespace SoftvWCFService
             return Permiso.MargePermiso(xml);
         }
 
+
+
+        public PermisoEntity GetPermiso(int? IdRol)
+        {
+            return Permiso.GetOne(IdRol);
+        }
+
+        public PermisoEntity GetDeepPermiso(int? IdRol, int? IdModule)
+        {
+            return Permiso.GetOneDeep(IdRol, IdModule);
+        }
+
+        public IEnumerable<PermisoEntity> GetPermisoList()
+        {
+            return Permiso.GetAll();
+        }
+
+        public SoftvList<PermisoEntity> GetPermisoPagedList(int page, int pageSize)
+        {
+            return Permiso.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<PermisoEntity> GetPermisoPagedListXml(int page, int pageSize, String xml)
+        {
+            return Permiso.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddPermiso(PermisoEntity objPermiso)
+        {
+            return Permiso.Add(objPermiso);
+        }
+
+        public int UpdatePermiso(PermisoEntity objPermiso)
+        {
+            return Permiso.Edit(objPermiso);
+        }
+
+        public int DeletePermiso(String BaseRemoteIp, int BaseIdUser, int? IdRol)
+        {
+            return Permiso.Delete(IdRol);
+        }
 
         #endregion
 
@@ -1450,6 +1492,53 @@ namespace SoftvWCFService
         #endregion
 
 
+
+
+
+
+        #region BusquedaIndividual
+        public BusquedaIndividualEntity GetBusquedaIndividual(int? Id)
+        {
+            return BusquedaIndividual.GetOne(Id);
+        }
+
+        public BusquedaIndividualEntity GetDeepBusquedaIndividual(int? Id)
+        {
+            return BusquedaIndividual.GetOneDeep(Id);
+        }
+
+        public IEnumerable<BusquedaIndividualEntity> GetBusquedaIndividualList()
+        {
+            return BusquedaIndividual.GetAll();
+        }
+
+        public SoftvList<BusquedaIndividualEntity> GetBusquedaIndividualPagedList(int page, int pageSize)
+        {
+            return BusquedaIndividual.GetPagedList(page, pageSize);
+        }
+
+        public SoftvList<BusquedaIndividualEntity> GetBusquedaIndividualPagedListXml(int page, int pageSize, String xml)
+        {
+            return BusquedaIndividual.GetPagedList(page, pageSize, xml);
+        }
+
+        public int AddBusquedaIndividual(BusquedaIndividualEntity objBusquedaIndividual)
+        {
+            return BusquedaIndividual.Add(objBusquedaIndividual);
+        }
+
+        public int UpdateBusquedaIndividual(BusquedaIndividualEntity objBusquedaIndividual)
+        {
+            return BusquedaIndividual.Edit(objBusquedaIndividual);
+        }
+
+        public int DeleteBusquedaIndividual(String BaseRemoteIp, int BaseIdUser, int? Id)
+        {
+            return BusquedaIndividual.Delete(Id);
+        }
+
+        #endregion
+  
 
 
     }

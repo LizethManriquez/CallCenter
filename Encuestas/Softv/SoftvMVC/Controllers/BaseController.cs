@@ -194,7 +194,7 @@ namespace SoftvMVC.Controllers
                     //    ViewBag.POptAdd = false;
                     //}
 
-                    if (lm.FirstOrDefault().Permiso.OptUpdate)
+                    if (lm.FirstOrDefault().Permiso.OptUpdate == true)
                     {
                         ViewData["cambioadmin"] = true;
 
@@ -228,20 +228,20 @@ namespace SoftvMVC.Controllers
 
                 if (lm.Count > 0)
                 {
-                    if (!lm.FirstOrDefault().Permiso.OptAdd)
+                    if (!lm.FirstOrDefault().Permiso.OptAdd == false)
                     {
                         ViewData["POptAdd"] = false;
                         ViewBag.POptAdd = false;
 
                     }
 
-                    if (!lm.FirstOrDefault().Permiso.OptUpdate)
+                    if (!lm.FirstOrDefault().Permiso.OptUpdate == false)
                     {
                         ViewData["POptUpdate"] = false;
                         ViewBag.POptUpdate = false;
                     }
 
-                    if (!lm.FirstOrDefault().Permiso.OptDelete)
+                    if (!lm.FirstOrDefault().Permiso.OptDelete == false)
                     {
                         ViewData["POptDelete"] = false;
                         ViewBag.POptDelete = false;
@@ -264,20 +264,20 @@ namespace SoftvMVC.Controllers
 
                 if (lm.Count > 0)
                 {
-                    if (!lm.FirstOrDefault().Permiso.OptAdd)
+                    if (!lm.FirstOrDefault().Permiso.OptAdd == false)
                     {
                         ViewData["POptAdd"] = false;
                         ViewBag.POptAdd = false;
 
                     }
 
-                    if (!lm.FirstOrDefault().Permiso.OptUpdate)
+                    if (!lm.FirstOrDefault().Permiso.OptUpdate == false)
                     {
                         ViewData["POptUpdate"] = false;
                         ViewBag.POptUpdate = false;
                     }
 
-                    if (!lm.FirstOrDefault().Permiso.OptDelete)
+                    if (!lm.FirstOrDefault().Permiso.OptDelete == false)
                     {
                         ViewData["POptDelete"] = false;
                         ViewBag.POptDelete = false;
@@ -301,7 +301,7 @@ namespace SoftvMVC.Controllers
 
                 if (lm.Count > 0)
                 {
-                    if (!lm.FirstOrDefault().Permiso.OptAdd)
+                    if (!lm.FirstOrDefault().Permiso.OptAdd == true)
                     {
                         ViewData["NoAut"] = true;
 
@@ -332,7 +332,7 @@ namespace SoftvMVC.Controllers
                 if (lm.Count > 0)
                 {
 
-                    if (!lm.FirstOrDefault().Permiso.OptUpdate)
+                    if (!lm.FirstOrDefault().Permiso.OptUpdate == true)
                     {
                         ViewData["NoAut"] = true;
 

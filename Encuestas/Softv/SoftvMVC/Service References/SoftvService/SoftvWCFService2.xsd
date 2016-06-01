@@ -73,10 +73,12 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="IdModule" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="IdRol" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="OptAdd" type="xs:boolean" />
-          <xs:element minOccurs="0" name="OptDelete" type="xs:boolean" />
-          <xs:element minOccurs="0" name="OptSelect" type="xs:boolean" />
-          <xs:element minOccurs="0" name="OptUpdate" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Module" nillable="true" type="tns:ModuleEntity" />
+          <xs:element minOccurs="0" name="OptAdd" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="OptDelete" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="OptSelect" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="OptUpdate" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Role" nillable="true" type="tns:RoleEntity" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -740,4 +742,28 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfCALLEEntity" nillable="true" type="tns:ArrayOfCALLEEntity" />
+  <xs:complexType name="BusquedaIndividualEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Calle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Celular" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ciudad" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Colonia" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Contrato" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Numero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BusquedaIndividualEntity" nillable="true" type="tns:BusquedaIndividualEntity" />
+  <xs:complexType name="ArrayOfBusquedaIndividualEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BusquedaIndividualEntity" nillable="true" type="tns:BusquedaIndividualEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBusquedaIndividualEntity" nillable="true" type="tns:ArrayOfBusquedaIndividualEntity" />
 </xs:schema>

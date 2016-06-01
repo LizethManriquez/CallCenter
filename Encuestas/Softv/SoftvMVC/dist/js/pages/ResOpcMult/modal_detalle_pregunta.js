@@ -3,3 +3,4 @@
     $('.detalle_respuesta').attr('id',data.getAttribute('id'));
     $('#ModalDetalleResOpcMults').modal('show');
 }
+

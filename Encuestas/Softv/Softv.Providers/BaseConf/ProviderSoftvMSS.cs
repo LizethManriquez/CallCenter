@@ -177,8 +177,11 @@ namespace Softv.Providers
         {
             get { return CALLEProvider.Instance; }
         }
-  
 
+        public static BusquedaIndividualProvider BusquedaIndividual
+        {
+            get { return BusquedaIndividualProvider.Instance; }
+        }
 
     }
 }

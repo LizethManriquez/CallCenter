@@ -217,6 +217,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BusquedaIndividualController.cs" />
     <Compile Include="Controllers\CALLEController.cs" />
     <Compile Include="Controllers\CatalogoPeriodosCorteController.cs" />
     <Compile Include="Controllers\CIUDADController.cs" />
@@ -236,6 +237,7 @@
     <Compile Include="Controllers\PartialClass\BaseControllerFunc.cs" />
     <Compile Include="Controllers\PartialClass\BaseControllerScripts.cs" />
     <Compile Include="Controllers\PartialClass\UsuarioController.cs" />
+    <Compile Include="Controllers\PermisoController.cs" />
     <Compile Include="Controllers\PreguntaController.cs" />
     <Compile Include="Controllers\QuejaController.cs" />
     <Compile Include="Controllers\RelEncuestaClientesController.cs" />
@@ -617,12 +619,16 @@
     <Content Include="dist\js\pages\Encuesta\ModalEliminarEncuesta.js" />
     <Content Include="dist\js\pages\Encuesta\Utilerias.js" />
     <Content Include="dist\js\pages\Llamada\Lista.js" />
+    <Content Include="dist\js\pages\Permiso\Lista.js" />
+    <Content Include="dist\js\pages\Permiso\ModalesPermisos.js" />
     <Content Include="dist\js\pages\Pregunta\editar_pregunta.js" />
     <Content Include="dist\js\pages\Pregunta\Lista.js" />
     <Content Include="dist\js\pages\RelEncuestaCliente\Lista.js" />
     <Content Include="dist\js\pages\ResOpcMult\Lista.js" />
     <Content Include="dist\js\pages\ResOpcMult\modales_respuestas.js" />
     <Content Include="dist\js\pages\ResOpcMult\modal_detalle_pregunta.js" />
+    <Content Include="dist\js\pages\Role\Lista.js" />
+    <Content Include="dist\js\pages\Role\modales_role.js" />
     <Content Include="dist\js\pages\TipoPregunta\Lista.js" />
     <Content Include="dist\js\pages\Usuario\Lista.js" />
     <Content Include="favicon.ico" />
@@ -1417,6 +1423,7 @@
     <Content Include="Properties\DataSources\Softv.Entities.COLONIAEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.CVECAROLEntity.datasource" />
     <Content Include="Properties\DataSources\Softv.Entities.CVECOLCIUEntity.datasource" />
+    <Content Include="Properties\DataSources\Softv.Entities.BusquedaIndividualEntity.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1583,6 +1590,14 @@
     <Content Include="Views\RelEncuestaClientes\Index.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Encuesta\PreView.cshtml" />
+    <Content Include="Views\Permiso\Index.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Details.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\QuickIndex.cshtml" />
+    <Content Include="Views\Permiso\Create.cshtml" />
+    <Content Include="Views\Permiso\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

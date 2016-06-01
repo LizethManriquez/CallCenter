@@ -492,6 +492,54 @@ namespace SoftvMVC.SoftvService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IPermiso")]
     public interface IPermiso {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermiso", ReplyAction="http://tempuri.org/IPermiso/GetPermisoResponse")]
+        Softv.Entities.PermisoEntity GetPermiso(System.Nullable<int> IdRol);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermiso", ReplyAction="http://tempuri.org/IPermiso/GetPermisoResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.PermisoEntity> GetPermisoAsync(System.Nullable<int> IdRol);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetDeepPermiso", ReplyAction="http://tempuri.org/IPermiso/GetDeepPermisoResponse")]
+        Softv.Entities.PermisoEntity GetDeepPermiso(System.Nullable<int> IdRol, System.Nullable<int> IdModule);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetDeepPermiso", ReplyAction="http://tempuri.org/IPermiso/GetDeepPermisoResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.PermisoEntity> GetDeepPermisoAsync(System.Nullable<int> IdRol, System.Nullable<int> IdModule);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermisoList", ReplyAction="http://tempuri.org/IPermiso/GetPermisoListResponse")]
+        System.Collections.Generic.List<Softv.Entities.PermisoEntity> GetPermisoList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermisoList", ReplyAction="http://tempuri.org/IPermiso/GetPermisoListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.PermisoEntity>> GetPermisoListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermisoPagedList", ReplyAction="http://tempuri.org/IPermiso/GetPermisoPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.PermisoEntity> GetPermisoPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermisoPagedList", ReplyAction="http://tempuri.org/IPermiso/GetPermisoPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.PermisoEntity>> GetPermisoPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermisoPagedListXml", ReplyAction="http://tempuri.org/IPermiso/GetPermisoPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.PermisoEntity> GetPermisoPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetPermisoPagedListXml", ReplyAction="http://tempuri.org/IPermiso/GetPermisoPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.PermisoEntity>> GetPermisoPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/AddPermiso", ReplyAction="http://tempuri.org/IPermiso/AddPermisoResponse")]
+        int AddPermiso(Softv.Entities.PermisoEntity objPermiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/AddPermiso", ReplyAction="http://tempuri.org/IPermiso/AddPermisoResponse")]
+        System.Threading.Tasks.Task<int> AddPermisoAsync(Softv.Entities.PermisoEntity objPermiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/UpdatePermiso", ReplyAction="http://tempuri.org/IPermiso/UpdatePermisoResponse")]
+        int UpdatePermiso(Softv.Entities.PermisoEntity objPermiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/UpdatePermiso", ReplyAction="http://tempuri.org/IPermiso/UpdatePermisoResponse")]
+        System.Threading.Tasks.Task<int> UpdatePermisoAsync(Softv.Entities.PermisoEntity objPermiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/DeletePermiso", ReplyAction="http://tempuri.org/IPermiso/DeletePermisoResponse")]
+        int DeletePermiso(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdRol);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/DeletePermiso", ReplyAction="http://tempuri.org/IPermiso/DeletePermisoResponse")]
+        System.Threading.Tasks.Task<int> DeletePermisoAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdRol);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPermiso/GetXmlPermiso", ReplyAction="http://tempuri.org/IPermiso/GetXmlPermisoResponse")]
         Globals.SoftvList<Softv.Entities.PermisoEntity> GetXmlPermiso(string xml);
         
@@ -530,6 +578,70 @@ namespace SoftvMVC.SoftvService {
         
         public PermisoClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.PermisoEntity GetPermiso(System.Nullable<int> IdRol) {
+            return base.Channel.GetPermiso(IdRol);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.PermisoEntity> GetPermisoAsync(System.Nullable<int> IdRol) {
+            return base.Channel.GetPermisoAsync(IdRol);
+        }
+        
+        public Softv.Entities.PermisoEntity GetDeepPermiso(System.Nullable<int> IdRol, System.Nullable<int> IdModule) {
+            return base.Channel.GetDeepPermiso(IdRol, IdModule);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.PermisoEntity> GetDeepPermisoAsync(System.Nullable<int> IdRol, System.Nullable<int> IdModule) {
+            return base.Channel.GetDeepPermisoAsync(IdRol, IdModule);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.PermisoEntity> GetPermisoList() {
+            return base.Channel.GetPermisoList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.PermisoEntity>> GetPermisoListAsync() {
+            return base.Channel.GetPermisoListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.PermisoEntity> GetPermisoPagedList(int page, int pageSize) {
+            return base.Channel.GetPermisoPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.PermisoEntity>> GetPermisoPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetPermisoPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.PermisoEntity> GetPermisoPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetPermisoPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.PermisoEntity>> GetPermisoPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetPermisoPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddPermiso(Softv.Entities.PermisoEntity objPermiso) {
+            return base.Channel.AddPermiso(objPermiso);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddPermisoAsync(Softv.Entities.PermisoEntity objPermiso) {
+            return base.Channel.AddPermisoAsync(objPermiso);
+        }
+        
+        public int UpdatePermiso(Softv.Entities.PermisoEntity objPermiso) {
+            return base.Channel.UpdatePermiso(objPermiso);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdatePermisoAsync(Softv.Entities.PermisoEntity objPermiso) {
+            return base.Channel.UpdatePermisoAsync(objPermiso);
+        }
+        
+        public int DeletePermiso(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdRol) {
+            return base.Channel.DeletePermiso(BaseRemoteIp, BaseIdUser, IdRol);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeletePermisoAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> IdRol) {
+            return base.Channel.DeletePermisoAsync(BaseRemoteIp, BaseIdUser, IdRol);
         }
         
         public Globals.SoftvList<Softv.Entities.PermisoEntity> GetXmlPermiso(string xml) {
@@ -4377,7 +4489,7 @@ namespace SoftvMVC.SoftvService {
         Softv.Entities.CVECAROLEntity GetCVECAROL(System.Nullable<int> Clv_Colonia);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/GetCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/GetCVECAROLResponse")]
-        System.Threading.Tasks.Task<Softv.Entities.CVECAROLEntity> GetCVECAROLAsync(System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia);
+        System.Threading.Tasks.Task<Softv.Entities.CVECAROLEntity> GetCVECAROLAsync(System.Nullable<int> Clv_Colonia);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/GetDeepCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/GetDeepCVECAROLResponse")]
         Softv.Entities.CVECAROLEntity GetDeepCVECAROL(System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia);
@@ -4419,7 +4531,7 @@ namespace SoftvMVC.SoftvService {
         int DeleteCVECAROL(System.Nullable<int> Clv_Colonia);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICVECAROL/DeleteCVECAROL", ReplyAction="http://tempuri.org/ICVECAROL/DeleteCVECAROLResponse")]
-        System.Threading.Tasks.Task<int> DeleteCVECAROLAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia);
+        System.Threading.Tasks.Task<int> DeleteCVECAROLAsync(System.Nullable<int> Clv_Colonia);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -4453,8 +4565,8 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.GetCVECAROL(Clv_Colonia);
         }
         
-        public System.Threading.Tasks.Task<Softv.Entities.CVECAROLEntity> GetCVECAROLAsync(System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia) {
-            return base.Channel.GetCVECAROLAsync(Clv_Calle, Clv_Colonia);
+        public System.Threading.Tasks.Task<Softv.Entities.CVECAROLEntity> GetCVECAROLAsync(System.Nullable<int> Clv_Colonia) {
+            return base.Channel.GetCVECAROLAsync(Clv_Colonia);
         }
         
         public Softv.Entities.CVECAROLEntity GetDeepCVECAROL(System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia) {
@@ -4509,8 +4621,8 @@ namespace SoftvMVC.SoftvService {
             return base.Channel.DeleteCVECAROL(Clv_Colonia);
         }
         
-        public System.Threading.Tasks.Task<int> DeleteCVECAROLAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Calle, System.Nullable<int> Clv_Colonia) {
-            return base.Channel.DeleteCVECAROLAsync(BaseRemoteIp, BaseIdUser, Clv_Calle, Clv_Colonia);
+        public System.Threading.Tasks.Task<int> DeleteCVECAROLAsync(System.Nullable<int> Clv_Colonia) {
+            return base.Channel.DeleteCVECAROLAsync(Clv_Colonia);
         }
     }
     
@@ -4656,6 +4768,151 @@ namespace SoftvMVC.SoftvService {
         
         public System.Threading.Tasks.Task<int> DeleteCALLEAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Clv_Calle) {
             return base.Channel.DeleteCALLEAsync(BaseRemoteIp, BaseIdUser, Clv_Calle);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SoftvService.IBusquedaIndividual")]
+    public interface IBusquedaIndividual {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualResponse")]
+        Softv.Entities.BusquedaIndividualEntity GetBusquedaIndividual(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualAsync(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetDeepBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetDeepBusquedaIndividualResponse")]
+        Softv.Entities.BusquedaIndividualEntity GetDeepBusquedaIndividual(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetDeepBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetDeepBusquedaIndividualResponse")]
+        System.Threading.Tasks.Task<Softv.Entities.BusquedaIndividualEntity> GetDeepBusquedaIndividualAsync(System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualList", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualListResponse")]
+        System.Collections.Generic.List<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualList", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualListResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.BusquedaIndividualEntity>> GetBusquedaIndividualListAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedList", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListResponse")]
+        Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualPagedList(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedList", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity>> GetBusquedaIndividualPagedListAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListXml", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListXmlResponse")]
+        Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualPagedListXml(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListXml", ReplyAction="http://tempuri.org/IBusquedaIndividual/GetBusquedaIndividualPagedListXmlResponse")]
+        System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity>> GetBusquedaIndividualPagedListXmlAsync(int page, int pageSize, string xml);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/AddBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/AddBusquedaIndividualResponse")]
+        int AddBusquedaIndividual(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/AddBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/AddBusquedaIndividualResponse")]
+        System.Threading.Tasks.Task<int> AddBusquedaIndividualAsync(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/UpdateBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/UpdateBusquedaIndividualResponse")]
+        int UpdateBusquedaIndividual(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/UpdateBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/UpdateBusquedaIndividualResponse")]
+        System.Threading.Tasks.Task<int> UpdateBusquedaIndividualAsync(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/DeleteBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/DeleteBusquedaIndividualResponse")]
+        int DeleteBusquedaIndividual(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBusquedaIndividual/DeleteBusquedaIndividual", ReplyAction="http://tempuri.org/IBusquedaIndividual/DeleteBusquedaIndividualResponse")]
+        System.Threading.Tasks.Task<int> DeleteBusquedaIndividualAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IBusquedaIndividualChannel : SoftvMVC.SoftvService.IBusquedaIndividual, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class BusquedaIndividualClient : System.ServiceModel.ClientBase<SoftvMVC.SoftvService.IBusquedaIndividual>, SoftvMVC.SoftvService.IBusquedaIndividual {
+        
+        public BusquedaIndividualClient() {
+        }
+        
+        public BusquedaIndividualClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public BusquedaIndividualClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public BusquedaIndividualClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public BusquedaIndividualClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public Softv.Entities.BusquedaIndividualEntity GetBusquedaIndividual(System.Nullable<int> Id) {
+            return base.Channel.GetBusquedaIndividual(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualAsync(System.Nullable<int> Id) {
+            return base.Channel.GetBusquedaIndividualAsync(Id);
+        }
+        
+        public Softv.Entities.BusquedaIndividualEntity GetDeepBusquedaIndividual(System.Nullable<int> Id) {
+            return base.Channel.GetDeepBusquedaIndividual(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Softv.Entities.BusquedaIndividualEntity> GetDeepBusquedaIndividualAsync(System.Nullable<int> Id) {
+            return base.Channel.GetDeepBusquedaIndividualAsync(Id);
+        }
+        
+        public System.Collections.Generic.List<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualList() {
+            return base.Channel.GetBusquedaIndividualList();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Softv.Entities.BusquedaIndividualEntity>> GetBusquedaIndividualListAsync() {
+            return base.Channel.GetBusquedaIndividualListAsync();
+        }
+        
+        public Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualPagedList(int page, int pageSize) {
+            return base.Channel.GetBusquedaIndividualPagedList(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity>> GetBusquedaIndividualPagedListAsync(int page, int pageSize) {
+            return base.Channel.GetBusquedaIndividualPagedListAsync(page, pageSize);
+        }
+        
+        public Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity> GetBusquedaIndividualPagedListXml(int page, int pageSize, string xml) {
+            return base.Channel.GetBusquedaIndividualPagedListXml(page, pageSize, xml);
+        }
+        
+        public System.Threading.Tasks.Task<Globals.SoftvList<Softv.Entities.BusquedaIndividualEntity>> GetBusquedaIndividualPagedListXmlAsync(int page, int pageSize, string xml) {
+            return base.Channel.GetBusquedaIndividualPagedListXmlAsync(page, pageSize, xml);
+        }
+        
+        public int AddBusquedaIndividual(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual) {
+            return base.Channel.AddBusquedaIndividual(objBusquedaIndividual);
+        }
+        
+        public System.Threading.Tasks.Task<int> AddBusquedaIndividualAsync(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual) {
+            return base.Channel.AddBusquedaIndividualAsync(objBusquedaIndividual);
+        }
+        
+        public int UpdateBusquedaIndividual(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual) {
+            return base.Channel.UpdateBusquedaIndividual(objBusquedaIndividual);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateBusquedaIndividualAsync(Softv.Entities.BusquedaIndividualEntity objBusquedaIndividual) {
+            return base.Channel.UpdateBusquedaIndividualAsync(objBusquedaIndividual);
+        }
+        
+        public int DeleteBusquedaIndividual(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
+            return base.Channel.DeleteBusquedaIndividual(BaseRemoteIp, BaseIdUser, Id);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteBusquedaIndividualAsync(string BaseRemoteIp, int BaseIdUser, System.Nullable<int> Id) {
+            return base.Channel.DeleteBusquedaIndividualAsync(BaseRemoteIp, BaseIdUser, Id);
         }
     }
 }
