@@ -53,7 +53,7 @@ $('#tablaPreguntas').on('click', '.EditarPregunta', function () {
               
                 $('#edPanelPreguntaOptMultiple').show();
                 $('#edPanelPreguntaCerrada').hide();
-                $('#edPanelPreguntaOptMultiple-tbody').append("<tr class='nrespuesta'><td></td><td><input type='text' class='flexdatalist form-control' id='" + respuestas[t].Id_ResOpcMult2 + "' value='" + respuestas[t].ResOpcMult + "' disabled></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaOM'>Quitar</button></td></tr>");
+                $('#edPanelPreguntaOptMultiple-tbody').append("<tr class='nrespuesta'><td></td><td><input type='text' class='form-control' id='" + respuestas[t].Id_ResOpcMult2 + "' value='" + respuestas[t].ResOpcMult + "' disabled></td><td><button class='btn btn-danger btn-xs edEliminarRespuestaOM'>Quitar</button></td></tr>");
             }
         }
 
@@ -104,7 +104,6 @@ $('#ed_TipoPregunta').change(function () {
 
 });
 
-
 $('#EditarPregunta').click(function () {
 
     var IdPregunta = $('#idParaEditar').val();
@@ -113,6 +112,7 @@ $('#EditarPregunta').click(function () {
 
     var detallePregunta = {};
     var duplicado = [];
+    var lista_opciones_aux = [];
     detallePregunta.IdPregunta = generateUUID();
     detallePregunta.IdPregunta2 = IdPregunta2;
     detallePregunta.Pregunta = $('#ed_NombrePregunta').val();
@@ -151,7 +151,6 @@ $('#EditarPregunta').click(function () {
                 swal("Por favor agrega respuestas a la pregunta", "", "error");
             } else {
                 var vacios = 0;
-                EliminarDeArreglo(Lista_opciones, "Id_ResOpcMult", IdPregunta);
                 $('#edTablaRespuestasOM > tbody  > tr').each(function () {
                     var x = $(this).closest(".nrespuesta").find("input:text").map(function () { return $(this); });
                     var test1 = $(this).closest(".nrespuesta").find("input:text").map(function () { return $(this).val(); });
@@ -160,16 +159,21 @@ $('#EditarPregunta').click(function () {
                         Opciones.Id_ResOpcMult = detallePregunta.IdPregunta;
                         if (x[i].attr('id') == 'undefined') {
                             Opciones.Id_ResOpcMult2 = '';
-                        } else {
+                        } else if (x[i].attr('id') == 'focus') {
+                            Opciones.Id_ResOpcMult2 = '';
+                        }
+                        else {
                             Opciones.Id_ResOpcMult2 = x[i].attr('id');
                         }
-                        Opciones.ResOpcMult = x[i].val();
-                        duplicado.push(x[i].val());
-                        Lista_opciones.push(Opciones);
-                        ActualizaListaPreguntas(true);
                         if (x[i].val() == "") {
                             vacios = vacios + 1;
+                        } else {
+                            Opciones.ResOpcMult = x[i].val();
+                            duplicado.push(x[i].val());
+                            lista_opciones_aux.push(Opciones);
                         }
+                           
+                            
                     }
                 });
                 var contador = 0;
@@ -184,17 +188,16 @@ $('#EditarPregunta').click(function () {
                 if (vacios > 0) {
                     swal("Por favor llena todas las respuestas o elimina las vacias", "", "error");
                 } else if (contador > 0) {
-                    swal( "No puede haber respuestas duplicadas","", "error");
+                    swal("No puede haber respuestas duplicadas", "", "error");
                 } else {
+                    EliminarDeArreglo(Lista_opciones, "IdPregunta", IdPregunta2);
 
+                    for (var i = 0; i < lista_opciones_aux.length; i++) {
+                        Lista_opciones.push(lista_opciones_aux[i]);
+                    }
                     EliminarDeArreglo(Lista_preguntas, "IdPregunta", IdPregunta);//se elimina la pregunta del arreglo de preguntas
                     Lista_preguntas.push(detallePregunta);
-
-                    if (IdPregunta2 == undefined) {
-                        ActualizaListaPreguntas(true);
-                    } else {
-                        ActualizaListaPreguntas();
-                    }
+                    ActualizaListaPreguntas();
                     $('#ModalEditarPregunta').modal("hide");
                     $('#PanelPreguntaCerrada').hide();
                 }

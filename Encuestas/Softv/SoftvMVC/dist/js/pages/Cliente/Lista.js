@@ -1,7 +1,9 @@
-﻿
+﻿$(document).ready(function () {
 
-$(document).ready(function () {
-    LlenarTabla(5);
+
+    LlenarTabla($("#conexiones").val(),"","","");
+
+    /*DATOS GENERALES*/
     $('#contrato').val('');
     $('#nombre').val('');
     $('#calle').val('');
@@ -13,30 +15,22 @@ $(document).ready(function () {
     $('#celular').mask('000-000-0000');
     $('#correo').val('');
 
-
-
-
-
+    /*DATOS FISCALES*/
+    $('#rfc').mask('AAAA-000-000');
+    $('#curp').mask('AAAA-000000-AAAAAA-00');
+    $('#rsocial').mask('AAAA-000000-AAAAAA-00');
 });
-
-
-
-
-
-
 
 $("#conexiones").change(function () {
     var id=$(this).val();
-    LlenarTabla(id);
+    LlenarTabla(id,"","","");
 
 
 });
 
+function LlenarTabla(plaza,contrato,cliente,direccion) {
 
 
-function LlenarTabla(con) {
-
-    
 
     $('#TablaClientes').dataTable({
         "processing": true,
@@ -50,7 +44,7 @@ function LlenarTabla(con) {
         "ajax": {
             "url": "/Cliente/GetList/",
             "type": "POST",
-            "data": { 'data': con },
+            "data": { 'plaza': plaza,'contrato':contrato,'cliente':cliente,'direccion':direccion },
         },
         "fnInitComplete": function (oSettings, json) {
 
@@ -63,14 +57,15 @@ function LlenarTabla(con) {
 
         "columns": [
             { "data": "CONTRATO", "orderable": false },
-            { "data": "NOMBRE", "orderable": false },            
-            { "data": "TELEFONO", "orderable": false },            
-            { "data": "Email", "orderable": false },
+            { "data": "NOMBRE", "orderable": false },
+            { "data": "Colonia", "orderable": false },
+            { "data": "Calle", "orderable": false },
 
         {
             sortable: false,
             "render": function (data, type, full, meta) {
-                return "<button class='btn btn-info btn-xs detalleCliente' rel='" + full.conexion + "' id='"+full.CONTRATO+"'>Detalles</button> <button rel='" + full.conexion + "'class='btn btn-warning btn-xs editarCliente' id='"+full.CONTRATO+"'>Editar</button>";
+                
+                return "<button class='btn btn-info btn-xs detalleCliente' rel='" + full.conexion + "' id='" + full.CONTRATO + "'><i class='fa fa-info' aria-hidden='true'></i> Detalles</button> <button rel='" + full.conexion + "'class='btn btn-warning btn-xs editarCliente' id='" + full.CONTRATO + "'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button>";
             }
         }
         ],
@@ -101,97 +96,52 @@ function LlenarTabla(con) {
 
         "order": [[0, "asc"]]
     })
-
-    //$("div.toolbar").html('<button class="btn btn-success btn-sm Agregar" style="float:right;" ><i class="fa fa-plus" aria-hidden="true"></i> Nuevo cliente</button> <div class="input-group input-group-sm"><input class="form-control" type="text"><span class="input-group-btn"><button class="btn btn-info btn-flat" type="button">Buscar</button></span></div>');
-
 }
 
 
 
+$('#filtros').change(function () {
+    var filtro = $(this).val();
 
-
-//funcion:retorna las opciones que tendra cada row en la tabla principal
-function Opciones() {
-    var opc = "<button class='btn btn-info btn-xs Detalle' type='button'>Detalles</button> <button class='btn btn-warning btn-xs Editar' type='button'><i class='fa fa-pencil' aria-hidden='true'></i> Editar</button> ";//<button class='btn btn-danger btn-xs eliminar'  type='button'> <i class='fa fa-trash-o' aria-hidden='true'></i> Eliminar</button>"
-    return opc;
-}
-
-$('#TablaClientes').on('click', '.detalleCliente', function () {
-    $('#ModalDetalleCliente').modal('show');
-});
-
-$('#TablaClientes').on('click', '.editarCliente', function () {
-
-    $('#contrato').val('');
-    $('#nombre').val('');
-    $('#calle').val('');
-    $('#numero').val('');
-    $('#cp').val('');
-    $('#calles').val('');
-    $('#colonia').val('');
-    $('#telefono').val('');
-    $('#celular').val('');
-    $('#correo').val('');
-
-
-   var id= $(this).attr('rel');
-    var contrato=$(this).attr('id');
-    $('#ModalEditarCliente').modal('show');
-
-    $.ajax({
-        url: "/CLIENTE/DetalleCliente/",
-        type: "POST",
-        data: { 'id': id, 'contrato': contrato },
-        success: function (data, textStatus, jqXHR) {
-            console.log(data);
-            console.log(data.CONTRATO);
-
-
-            $('#contrato').val(data[0].CONTRATO);
-            $('#nombre').val(data[0].NOMBRE);
-            $('#calle').val(data[0].Clv_Calle);
-            $('#numero').val(data[0].NUMERO);
-            $('#cp').val(data[0].CodigoPostal);
-            $('#calles').val(data[0].ENTRECALLES);
-            $('#colonia').val(data[0].Clv_Colonia);
-            $('#telefono').val(data[0].TELEFONO);
-            $('#celular').val(data[0].CELULAR);
-            $('#correo').val(data[0].Email);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-
-        }
-    });
-
-
-
-
-
-});
-
-
-
-$('#Editar').click(function () {
-
-    var cliente = {};
-    cliente.CONTRATO = $('#contrato').val();
-    cliente.NOMBRE = $('#nombre').val();
-    cliente.Clv_Calle = $('#calle').val();
-    cliente.NUMERO = $('#numero').val();
-    cliente.ENTRECALLES = $('#calles').val();
-    cliente.Clv_Colonia = $('#colonia').val();
-    cliente.CodigoPostal =  $('#cp').val();
-    cliente.TELEFONO = $('#telefono').val();
-    cliente.CELULAR = $('#celular').val();
-    cliente.DESGLOSA_Iva = "";
-    cliente.SoloInternet = "";
-    cliente.eshotel ="";
-    cliente.Clv_Ciudad =""; 
-    cliente.Email = $('#correo').val();
-    cliente.clv_sector = "";
-    cliente.Clv_Periodo = "";
-    cliente.Clv_Tap = "";
-    cliente.Zona2 = "";
+    if (filtro == "1") {
+        $('#Pcontrato').show();
+        $('#Pdireccion').hide();
+        $('#Pnombre').hide();
+    }
+    else if (filtro == "2") {
+        $('#Pcontrato').hide();
+        $('#Pdireccion').hide();
+        $('#Pnombre').show();
+    }
+    else if (filtro == "3") {
+        $('#Pcontrato').hide();
+        $('#Pdireccion').show();
+        $('#Pnombre').hide();
+    }
     
+
 });
+
+$('#bcontrato').click(function () {
+    
+    LlenarTabla($("#conexiones").val(),$('#fcontrato').val(), "", "")
+});
+
+$('#bnombre').click(function () {
+
+    LlenarTabla($("#conexiones").val(), "", $('#fnombre').val(), "")
+});
+
+$('#bdireccion').click(function () {
+
+    LlenarTabla($("#conexiones").val(), "", "", $('#fdireccion').val())
+});
+
+
+
+
+
+
+
+
 
